@@ -46,7 +46,7 @@ function BlogCard({authorName, content, title, publishedDate, id}: BlogCardProps
 
 export function Avatar({name, size=6}: {name:string, size?: number}){
     return(
-        <div className={`relative inline-flex items-center justify-center overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600  ${size == 6 ? "h-6 w-6" : "h-10 w-10"}`}>
+        <div className={`relative inline-flex items-center justify-center overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600  ${size == 6 ? "h-[24px] w-[24px]" : "h-[40px] w-[40px]"}`}>
             <span className={` ${size == 6 ? "font-medium text-xs" : "font-medium text-lg"}  text-gray-600 dark:text-gray-300 capitalize`}>{name[0]}</span>
         </div>
     )
