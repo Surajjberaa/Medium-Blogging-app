@@ -8,9 +8,9 @@ function FullBlog({blog}: {blog: Blog }) {
         <AppBar  />
         <div className="flex justify-center"> 
 
-        <div className="grid grid-cols-12 px-10 w-full pt-10 max-w-screen-xl
+        <div className="grid lg:grid-cols-12 px-10 w-full pt-10 max-w-screen-xl
         ">
-            <div className="col-span-8">
+            <div className="col-span-8 pb-20 lg:pb-0">
                 <div className="font-extrabold text-5xl">
                     {blog.title}
                 </div>
