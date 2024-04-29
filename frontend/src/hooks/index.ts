@@ -54,3 +54,30 @@ export const useBlog = ({id}: {id: string}) => {
         Blog
     }
 }
+
+export const useUser = () => {
+    const [User, setUser] = useState()
+    const [Email, setEmail] = useState()
+
+    useEffect(()=>{
+        axios.get(`${BACKEND_URL}/api/v1/user/userdetails`, {
+            headers: {
+                Authorization: localStorage.getItem("token")
+            }, 
+        }).then((response)=>{
+            // console.log(response.data.user.name);
+            
+            setUser(response.data.user.name)
+            setEmail(response.data.user.email)
+        })
+
+        
+        
+
+    },[])
+
+    return {
+        User,
+        Email
+    }
+}

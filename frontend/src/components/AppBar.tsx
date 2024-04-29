@@ -1,10 +1,15 @@
 import { Link, useNavigate } from "react-router-dom"
 import { Avatar } from "./BlogCard"
+import { useUser } from "../hooks";
+// import { UserDetails } from "../controller/UserDetails"
 
 function AppBar() {
 
   const navigate = useNavigate()
-
+  // @ts-ignore
+  const {User, Email}: string = useUser()
+  // console.log(User);
+  
   function logoutHandler(){
 
     localStorage.clear()
@@ -27,7 +32,7 @@ function AppBar() {
               onClick={logoutHandler}
               >Log out</button>
             </Link>
-            <Avatar size={10} name="Suraj"/>
+            <Avatar size={10} name={User || ""}/>
         </div>
     </div>
   )
