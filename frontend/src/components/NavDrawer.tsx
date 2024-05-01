@@ -8,10 +8,11 @@ import {
   } from "@/components/ui/sheet"
 import { Link, useNavigate } from "react-router-dom"
 
-const navigate = useNavigate()
 
-  
 function NavDrawer() {
+
+    
+    const navigate = useNavigate()
 
     function logoutHandler(){
 
@@ -38,7 +39,7 @@ function NavDrawer() {
       </SheetTitle>
       <SheetDescription>
         <div className="text-xl pt-8 cursor-pointer">
-            <Link to={"/profile"} onClick={logoutHandler}>
+            <Link to={"/profile"} >
             Profile
             </Link>
         </div>
@@ -49,7 +50,7 @@ function NavDrawer() {
         </div>
       </SheetDescription>
       <SheetDescription>
-        <Link to={"/signin"}>
+        <Link to={"/signin"} onClick={logoutHandler}>
         <div className="text-xl"> 
             Log out
         </div>
