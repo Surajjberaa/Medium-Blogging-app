@@ -3,6 +3,7 @@ import  Signup  from './pages/Signup'
 import  Signin  from './pages/Signin'
 import  Blog  from './pages/Blog'
 import Blogs from "./pages/Blogs"
+import Profile from "./pages/Profile"
 import Publish from "./components/Publish"
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
         <Route path="/blog/:id" element={<Blog />} />
         <Route path="/blogs" element={<Blogs />} />
         <Route path="/publish" element={<Publish />} />
+        <Route path="/profile" element={<Profile/>}/>
       </Routes>
     </BrowserRouter>    
     </>
