@@ -147,4 +147,27 @@ blogRouter.get('/:id', async(c) => {
   })
   
 
+  blogRouter.post("/:id", async(c)=>{
+    const id = Number(c.req.param("id"));
+    const prisma = new PrismaClient({
+      datasourceUrl: c.env.DATABASE_URL,
+    }).$extends(withAccelerate())
+
+    
+
+    try {
+      await prisma.blog.delete({
+        where: {
+          id: id,
+          authorId: c.get("authorId")
+        }
+      })
+    } catch (error) {
+      c.status(411)
+        return c.json({
+            error: "Error while deleting"
+        })
+    }
+
+  })
   
