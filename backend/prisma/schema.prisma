@@ -18,6 +18,8 @@ model User {
   email    String @unique
   name     String
   password String
+  role       Role     @default(USER)
+  adminKey   String?
   posts    Blog[]
 }
 
@@ -28,4 +30,9 @@ model Blog{
   published Boolean @default(false)
   author    User    @relation(fields: [authorId], references: [id])
   authorId  Int
+}
+
+enum Role {
+  USER
+  ADMIN
 }
