@@ -74,7 +74,7 @@ export const useUser = () => {
         
         
 
-    },[])
+    },[User, Email])
 
     return {
         User,
