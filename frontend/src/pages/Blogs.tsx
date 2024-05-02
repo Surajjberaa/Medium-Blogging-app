@@ -2,8 +2,17 @@ import AppBar from "../components/AppBar"
 import BlogCard from "../components/BlogCard"
 import BlogSkeleton from "../components/BlogSkeleton";
 import { useBlogs } from "../hooks"
+import NonEligible from "@/components/NonEligible";
 
 function Blogs() {
+  
+  const eligibile = localStorage.getItem("token")
+
+  if (!eligibile) {
+    return <div>
+      <NonEligible/>
+    </div>
+  }
 
     const { loading, Blogs } = useBlogs();
 
