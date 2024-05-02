@@ -2,8 +2,19 @@ import { useParams } from "react-router-dom"
 import { useBlog } from "../hooks"
 import FullBlog from "../components/FullBlog"
 import AppBar from "../components/AppBar"
+import NonEligible from "@/components/NonEligible"
 
 function Blog() {
+
+  
+  const eligibile = localStorage.getItem("token")
+
+  if (!eligibile) {
+    return <div>
+      <NonEligible/>
+    </div>
+  }
+
   const {id} = useParams()
   const {loading, Blog} = useBlog({
     id : id || ""
