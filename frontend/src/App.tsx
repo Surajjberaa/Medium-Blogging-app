@@ -5,6 +5,7 @@ import  Blog  from './pages/Blog'
 import Blogs from "./pages/Blogs"
 import Profile from "./pages/Profile"
 import Publish from "./components/Publish"
+import AllUser from "./pages/AllUser"
 
 function App() {
 
@@ -19,6 +20,7 @@ function App() {
         <Route path="/blogs" element={<Blogs />} />
         <Route path="/publish" element={<Publish />} />
         <Route path="/profile" element={<Profile/>}/>
+        <Route path="/allusers" element={<AllUser/>}/>
       </Routes>
     </BrowserRouter>    
     </>

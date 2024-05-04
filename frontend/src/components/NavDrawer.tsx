@@ -46,7 +46,9 @@ function NavDrawer() {
       </SheetDescription>
       <SheetDescription>
         <div className="text-xl"> 
+          <Link to={"/allusers"}>
             All Users
+          </Link>
         </div>
       </SheetDescription>
       <SheetDescription>

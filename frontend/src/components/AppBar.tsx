@@ -9,7 +9,7 @@ function AppBar() {
 
   // @ts-ignore
   const {User, Email}: string = useUser()
-  console.log(User);
+  // console.log(User);
   
   return (
     <div className="border-b flex justify-between px-3 py-2  lg:px-10 ">

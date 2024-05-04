@@ -11,6 +11,13 @@ export interface Blog  {
     }
 }
 
+export interface AllUsers  {
+    name: string,
+    email: string,
+    id: number,
+    role: string
+}
+
 export const useBlogs = () => {
     const [loading, setLoading] = useState(true)
     const [Blogs, setBlogs] = useState<Blog[]>([])
@@ -79,5 +86,27 @@ export const useUser = () => {
     return {
         User,
         Email
+    }
+}
+
+export const useAllUsers = () => {
+    const [loading, setLoading] = useState(true)
+    const [User, setUser] = useState<AllUsers[]>([])
+
+    useEffect(()=>{
+        axios.get(`${BACKEND_URL}/api/v1/user/allUsers`, {
+            headers: {
+                Authorization: localStorage.getItem("token")
+            }
+        }).then(response => {
+                setUser(response.data)
+                setLoading(false)
+            })
+
+    },[])
+
+    return {
+        loading,
+        User
     }
 }
