@@ -1,9 +1,11 @@
 import AppBar from "@/components/AppBar"
-import { useUser } from "@/hooks"
+import BlogCard from "@/components/BlogCard"
+import { useUser, useUserBlogs } from "@/hooks"
 
 function Profile() {
   // @ts-ignore
   const {User, Email}: string = useUser()
+  const {Blog, loading} = useUserBlogs()
 
   return (<div>
     <AppBar/>
@@ -27,13 +29,23 @@ function Profile() {
           </div>
         </div>
       </div>
-      <div className="border-t-2 border-gray-400 mt-5 flex justify-evenly">
-          <div className="border-r-2 border-gray-600 w-full text-center hover:bg-gray-400 bg-slate-200" >
+      <div className="border-t-2  border-gray-400 mt-5 flex justify-evenly">
+          <div className=" border-gray-600 w-full text-center hover:bg-gray-400 bg-slate-200" >
             All Posts
           </div>
-          <div className="border-l-2 border-gray-600 w-full text-center hover:bg-gray-400 bg-slate-200">
+          {/* <div className="border-l-2 border-gray-600 w-full text-center hover:bg-gray-400 bg-slate-200">
             Likes
-          </div>
+          </div> */}
+      </div>
+      <div className="flex justify-center ">
+        <div className=" lg:max-w-4xl w-[600px] max-w-xl px-7 lg:p-0 ">
+          {
+            Blog.map(blog => 
+              
+              <BlogCard title={blog.title} authorName={blog.author.name} content={blog.content} publishedDate={"April 28 2024"}/>
+            )
+          }
+        </div>
       </div>
     </div>
   </div>

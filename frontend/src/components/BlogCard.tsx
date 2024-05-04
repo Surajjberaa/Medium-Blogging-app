@@ -4,8 +4,8 @@ interface BlogCardProps {
     authorName: string,
     title: string,
     content: string,
-    publishedDate: string,
-    id: number
+    publishedDate?: string,
+    id?: number
 }
 
 function BlogCard({authorName, content, title, publishedDate, id}: BlogCardProps) {
