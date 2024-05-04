@@ -116,6 +116,47 @@ blogRouter.put('/', async (c) => {
         blogs
     })
   })
+
+      
+
+blogRouter.get('/userBlogs', async (c)=> {
+  const prisma = new PrismaClient({
+    datasourceUrl: c.env?.DATABASE_URL	,
+}).$extends(withAccelerate());
+  console.log("Hey");
+  
+  try{
+    
+    const id = c.get("authorId")
+    console.log(id);
+    
+
+    const allBlogs = await prisma.blog.findMany(
+      {
+        where: {
+          authorId: id
+        },
+        select: {
+          title: true,
+          content: true,
+          published: true,
+          author: {
+            select: {
+              name: true
+            }
+          }
+        }
+      }
+    )
+    return c.json(allBlogs)
+  }catch(e){
+    return c.json({
+      meassage: "Error finding the users",
+    })
+  }
+
+})
+  
   
 blogRouter.get('/:id', async(c) => {
     const body = await c.req.param(`id`)
@@ -170,4 +211,4 @@ blogRouter.get('/:id', async(c) => {
     }
 
   })
-  
+
