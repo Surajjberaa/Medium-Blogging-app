@@ -58,6 +58,13 @@ function NavDrawer() {
         </div>
         </Link>
       </SheetDescription>
+      <SheetDescription>
+        <Link to={"/createAdmin"} >
+        <div className="text-xl"> 
+            Admin
+        </div>
+        </Link>
+      </SheetDescription>
     </SheetHeader>
   </SheetContent>
 </Sheet>
