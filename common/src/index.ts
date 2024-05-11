@@ -1,6 +1,5 @@
 import zod, { string } from "zod"
 
-
 export const signupschema = zod.object({
     name: zod.string(),
     email: zod.string().email(),
