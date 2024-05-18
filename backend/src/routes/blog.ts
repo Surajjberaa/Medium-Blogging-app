@@ -1,5 +1,5 @@
 import { Hono } from "hono";
-import { Prisma, PrismaClient } from '@prisma/client/edge'
+import { PrismaClient } from '@prisma/client/edge'
 import { withAccelerate } from '@prisma/extension-accelerate'
 import { decode, jwt, sign, verify } from 'hono/jwt'
 import { createBlogSchema, updateBlogSchema } from "@surajbera/medium-common/dist";
@@ -99,6 +99,11 @@ blogRouter.put('/', async (c) => {
         datasourceUrl: c.env.DATABASE_URL,
       }).$extends(withAccelerate())
 
+      let page = Number(c.req.param("page")) || 1
+      let limit = Number(c.req.param("limit")) || 10
+
+      let skip = (page - 1) * limit
+
     const blogs = await prisma.blog.findMany({
       select: {
         content: true,
@@ -109,7 +114,9 @@ blogRouter.put('/', async (c) => {
             name: true
           }
         }
-      }
+      },
+      skip: skip,
+      take: limit
     })
 
     return c.json({
